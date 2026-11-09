@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#f7f6f1">
+  <title>FIX UP </title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="shortcut icon" href="logo.png" type="image/x-icon">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
+</head>
+<body>
+  <div class="app-shell">
+    <header class="topbar">
+      <a class="brand" href="#" data-page="home"><span class="brand-mark"><img src="logo.png" class="logo"></span><span>FIX<span class="brand-light">UP</span></span></a>
+      <div class="top-actions"><button class="location" id="locationBtn"> <span>São Paulo, SP</span></button><button class="avatar" aria-label="Perfil">M</button></div>
+    </header>
+    <main id="app" aria-live="polite"></main>
+    <nav class="bottom-nav" aria-label="Navegação principal">
+      <button data-page="home" class="active"><span>⌂</span>Início</button>
+      <button data-page="professionals"><span>⌕</span>Profissionais</button>
+      <button data-page="orders"><span>▤</span>Pedidos</button>
+      <button data-page="profile"><span>◯</span>Perfil</button>
+    </nav>
+  </div>
+  <div class="toast" id="toast" role="status"></div>
+  <script src="app.js"></script>
+</body></html>
