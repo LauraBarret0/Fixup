@@ -131,7 +131,7 @@
     {
       who: "Paula R.",
       r: "5,0",
-      t: "Pontual e deixou tudo limpo. O valor foi o mesmo do orçamento.",
+      t: "Pontual e deixou tudo limpo.",
     },
     {
       who: "Ricardo T.",
