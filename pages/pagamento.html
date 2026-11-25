@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, viewport-fit=cover"
+    />
+    <meta name="theme-color" content="#F7F6F1" />
+    <title>FIX UP – Pagamento protegido</title>
+    <link rel="shortcut icon" href="../image/logo.png" type="image/x-icon" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../css/styles.css" />
+  </head>
+  <body>
+    <div class="app">
+      <main class="screen">
+        <header class="head">
+          <a
+            class="back"
+            id="back"
+            href="profissionais.html"
+            aria-label="Voltar"
+            ><svg class="i thick"><use href="#i-back" /></svg
+          ></a>
+          <div class="t">
+            <h1>Confirmar e pagar</h1>
+            <div class="sub">Passo 3 de 3</div>
+          </div>
+        </header>
+        <div class="body" style="gap: 16px">
+          <div class="card kv">
+            <div class="r"><span>Serviço</span><span id="pgSvc"></span></div>
+            <div class="r">
+              <span>Profissional</span><span id="pgPro"></span>
+            </div>
+            <div class="r"><span>Quando</span><span id="pgWhen"></span></div>
+            <div class="r">
+              <label for="addr">Endereço</label
+              ><input
+                class="addr"
+                id="addr"
+                autocomplete="street-address"
+                placeholder="Rua, número e bairro"
+              />
+            </div>
+            <details class="ans">
+              <summary>Ver respostas do pedido</summary>
+              <dl id="pgAns"></dl>
+            </details>
+            <hr />
+            <div class="total">
+              <span>Total:</span><b id="pgTotal"></b>
+            </div>
+            
+          </div>
+          <div class="note">
+            <svg class="i s24"><use href="#i-lock" /></svg>
+            <div>
+              <b>Pagamento protegido</b>O valor fica retido até a conclusão do serviço e é liberado ao profissional após sua confirmação.
+            </div>
+          </div>
+          <fieldset class="pay">
+            <legend>Como pagar</legend>
+            <label class="opt"
+              ><input type="radio" name="pag" value="pix" checked /><span
+                >Pix</span
+              ><small>Aprovação na hora</small></label
+            >
+            <label class="opt"
+              ><input type="radio" name="pag" value="cartao" /><span
+                >Cartão de crédito</span
+              ></label
+            >
+          </fieldset>
+        </div>
+        <div class="foot" style="gap: 8px">
+          <button class="btn primary" id="payBtn">
+            <svg class="i thick"><use href="#i-lock" /></svg
+            ><span id="payLabel"></span>
+          </button>
+          <div class="hint center">
+            Cancelamento sem custo até 2 horas antes do horário.
+          </div>
+        </div>
+      </main>
+    </div>
+    <script src="../js/fixup.js"></script>
+    <script>
+      const S = FX.state,
+        { $, $$ } = FX;
+      FX.back(S.mode === "hoje" ? "hoje.html" : "profissionais.html");
+      $("#pgSvc").textContent = FX.summaryLine();
+      $("#pgPro").textContent = FX.pro().name;
+      $("#pgWhen").textContent = FX.whenText();
+      $("#pgTotal").textContent = FX.brl(FX.price());
+      $("#addr").value = S.address;
+      const extra = [...S.answers.slice(1).map((a) => [a.q, a.a])];
+      if (S.desc) extra.push(["Detalhes", S.desc]);
+      const nm = S.media.img + S.media.vid;
+      if (nm) extra.push(["Fotos e vídeos", nm + " arquivo(s) enviados"]);
+      $("#pgAns").innerHTML = extra.length
+        ? extra
+            .map(
+              ([q, a]) =>
+                `<div><dt>${q}</dt><dd>${a.replace(/</g, "&lt;")}</dd></div>`,
+            )
+            .join("")
+        : "<div><dd>Sem respostas adicionais.</dd></div>";
+      if (!extra.length) $(".ans").hidden = true;
+      function label() {
+        const c = $("input[name=pag]:checked").value === "cartao";
+        $("#payLabel").textContent =
+          `Pagar ${FX.brl(FX.price())} ${c ? "no cartão" : "com segurança"}`;
+      }
+      $$("input[name=pag]").forEach((r) => r.addEventListener("change", label));
+      label();
+      $("#addr").addEventListener("input", (e) =>
+        e.target.classList.remove("err"),
+      );
+      $("#payBtn").onclick = () => {
+        const a = $("#addr");
+        if (!a.value.trim()) {
+          a.classList.add("err");
+          a.focus();
+          return FX.toast("Informe o endereço do atendimento.");
+        }
+        S.address = a.value.trim();
+        $("#payBtn").disabled = true;
+        $("#payLabel").textContent = "Processando…";
+        setTimeout(() => {
+          S.orders.unshift({
+            icon: FX.svc().icon,
+            title: `${FX.svc().label} · ${FX.pro().name}`,
+            sub: FX.whenText(),
+            st: "Confirmado",
+          });
+          S.last = {
+            title: "Pedido confirmado",
+            text: `${FX.pro().name.split(" ")[0]} atende você ${FX.whenText()}. O pagamento fica protegido até você confirmar o serviço.`,
+          };
+          FX.save();
+          location.href = "confirmado.html";
+        }, 900);
+      };
+    </script>
+  </body>
+</html>

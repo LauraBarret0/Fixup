@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, viewport-fit=cover"
+    />
+    <meta name="theme-color" content="#F7F6F1" />
+    <title>FIX UP – Confirmado</title>
+    <link rel="shortcut icon" href="image/logo.png" type="image/x-icon" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../css/styles.css" />
+  </head>
+  <body>
+    <div class="app">
+      <main class="screen">
+        <div
+          class="body"
+          style="
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            gap: 12px;
+          "
+        >
+          <div
+            class="ok"
+            style="
+              width: 72px;
+              height: 72px;
+              border-radius: 50%;
+              background: var(--green);
+              color: #fff;
+              display: grid;
+              place-items: center;
+            "
+          >
+            <svg class="i" style="width: 36px; height: 36px; stroke-width: 2.4">
+              <use href="#i-check" />
+            </svg>
+          </div>
+          <h1 class="h1" id="cfTitle"></h1>
+          <p
+            id="cfText"
+            style="color: var(--muted); line-height: 1.5; max-width: 300px"
+          ></p>
+        </div>
+        <div class="foot">
+          <a class="btn primary" href="pedidos.html">Ver meus pedidos</a>
+          <a class="btn ghost" href="../index.html">Voltar ao início</a>
+        </div>
+      </main>
+    </div>
+    <script src="../js/fixup.js"></script>
+    <script>
+      const L = FX.state.last || {
+        title: "Tudo certo",
+        text: "Seu pedido foi registrado.",
+      };
+      FX.$("#cfTitle").textContent = L.title;
+      FX.$("#cfText").textContent = L.text;
+    </script>
+  </body>
+</html>

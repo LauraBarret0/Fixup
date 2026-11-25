@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, viewport-fit=cover"
+    />
+    <meta name="theme-color" content="#F7F6F1" />
+    <title>FIX UP – Profissionais disponíveis</title>
+    <link rel="shortcut icon" href="../image/logo.png" type="image/x-icon" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../css/styles.css" />
+  </head>
+  <body>
+    <div class="app">
+      <main class="screen">
+        <header class="head">
+          <a class="back" id="back" href="agendar.html" aria-label="Voltar"
+            ><svg class="i thick"><use href="#i-back" /></svg
+          ></a>
+          <div class="t">
+            <h1>Disponíveis agora</h1>
+            <div class="sub" id="prSub"></div>
+          </div>
+        </header>
+        <div class="body" style="gap: 14px">
+          <div class="req-card">
+            <div class="ic">
+              <svg class="i s18" id="rcIcon"><use href="#i-bolt" /></svg>
+            </div>
+            <div style="min-width: 0">
+              <b id="rcTitle"></b><span class="hint" id="rcSub"></span>
+            </div>
+          </div>
+          <div class="chips">
+            <button class="chip sm women" id="fWomen" aria-pressed="true">
+              <svg class="i s16 thick"><use href="#i-check" /></svg>Só mulheres
+            </button>
+            <button class="chip sm" id="fNear" aria-pressed="true">
+              Mais perto
+            </button>
+            <button class="chip sm" id="fRate" aria-pressed="false">
+              Melhor nota
+            </button>
+          </div>
+          <div class="sec" style="gap: 12px" id="proList"></div>
+        </div>
+        <div class="foot tight">
+          <a class="btn link" id="rush" href="hoje.html"
+            ><svg class="i s18 thick"><use href="#i-bolt" /></svg>Prefiro não
+            escolher: o primeiro disponível aceita</a
+          >
+          <div class="hint center">Dados ilustrativos do protótipo</div>
+        </div>
+      </main>
+    </div>
+    <script src="../js/fixup.js"></script>
+    <script>
+        const S = FX.state,
+          { $ } = FX;
+        S.mode = "agendado";
+        let sort = "near";
+        FX.back("agendar.html");
+        $("#prSub").textContent = `${FX.whenText()} · ${FX.svc().label}`;
+        $("#rcTitle").textContent = FX.summaryLine();
+        $("#rcSub").textContent = "" + FX.brl(FX.price());
+        $("#rush").onclick = () => {
+          S.mode = "hoje";
+          FX.save();
+        };
+        function list() {
+          return FX.PROS.filter((p) => !S.women || p.f).sort(
+            sort === "rate"
+              ? (a, b) => b.rating - a.rating || a.km - b.km
+              : (a, b) => a.km - b.km,
+          );
+        }
+        function render() {
+          $("#fWomen").setAttribute("aria-pressed", S.women);
+          $("#fNear").setAttribute("aria-pressed", sort === "near");
+          $("#fRate").setAttribute("aria-pressed", sort === "rate");
+          $("#proList").innerHTML = list()
+            .map(
+              (p) => `
+      <article class="card pro">
+        <div class="pro-top"><div class="avatar">${p.ini}</div>
+          <div class="pro-id"><b>${p.name}</b><div class="ver">${FX.icon("shield", "s14 thick")}Identidade verificada</div></div>
+          <div class="rate"><b>${FX.icon("star", "s16 star")}${FX.rate(p.rating)}</b><span>${p.n} avaliações</span></div></div>
+        <div class="thumbs">${FX.photos(p)
+          .map(
+            (src) =>
+              `<button type="button" data-src="${src}" aria-label="Ampliar foto de ${p.name}"><img src="${src}" alt="Trabalho de ${p.name}" loading="lazy" onerror="this.parentNode.remove()"></button>`,
+          )
+          .join("")}</div>
+        <div class="dist">${FX.icon("pin", "s16 thick")}${FX.km(p.km)} km de você</div>
+        <div class="row2"><a class="btn outline sm" href="perfil.html" data-pro="${p.id}">Ver perfil</a><a class="btn primary sm" href="pagamento.html" data-pro="${p.id}">Reservar</a></div>
+      </article>`,
+            )
+            .join("");
+          FX.save();
+        }
+        $("#proList").addEventListener("click", (e) => {
+          const t = e.target.closest('.thumbs button'); if (t) return FX.lightbox(t.dataset.src, 'Trabalho profissional')
+          const a = e.target.closest("[data-pro]");
+          if (a) {
+            S.pro = a.dataset.pro;
+            S.mode = "agendado";
+            FX.save();
+          }
+        });
+        $("#fWomen").onclick = () => {
+          S.women = !S.women;
+          render();
+        };
+        $("#fNear").onclick = () => {
+          sort = "near";
+          render();
+        };
+        $("#fRate").onclick = () => {
+          sort = "rate";
+          render();
+        };
+        render();
+    </script>
+  </body>
+</html>

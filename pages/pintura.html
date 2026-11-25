@@ -1,0 +1,311 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, viewport-fit=cover"
+    />
+    <meta name="theme-color" content="#F7F6F1" />
+    <title>FIX UP – Pintura</title>
+    <link rel="shortcut icon" href="../image/logo.png" type="image/x-icon" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../css/styles.css" />
+  </head>
+  <body>
+    <div class="app">
+      <main class="screen">
+        <header class="head">
+          <a class="back" id="back" href="../index.html" aria-label="Voltar"
+            ><svg class="i thick"><use href="#i-back" /></svg
+          ></a>
+          <div class="t">
+            <h1>Pintura</h1>
+            <div class="sub">Passo 1 de 3 · conte o que precisa</div>
+          </div>
+        </header>
+        <form id="form" class="screen-form" style="display: contents">
+          <div class="body" style="gap: 22px">
+            <div
+              class="tag"
+              id="urgentTag"
+              hidden
+              style="align-self: flex-start"
+            >
+              <svg class="i s16 thick"><use href="#i-bolt" /></svg>Pedido para
+              hoje
+            </div>
+            <fieldset class="q" data-q="O que você quer pintar?">
+              <legend>O que você quer pintar?</legend>
+              <div class="opts">
+                <label class="opt"
+                  ><input
+                    type="radio"
+                    name="tipo"
+                    value="parede"
+                    data-price="300"
+                    required
+                  /><span>Parede interna</span></label
+                >
+                <label class="opt"
+                  ><input
+                    type="radio"
+                    name="tipo"
+                    value="fachada"
+                    data-price="450"
+                    required
+                  /><span>Fachada ou parede externa</span></label
+                >
+                <label class="opt"
+                  ><input
+                    type="radio"
+                    name="tipo"
+                    value="teto"
+                    data-price="250"
+                    required
+                  /><span>Teto</span></label
+                >
+                <label class="opt"
+                  ><input
+                    type="radio"
+                    name="tipo"
+                    value="portas"
+                    data-price="180"
+                    required
+                  /><span>Portas, janelas ou portão</span></label
+                >
+                <label class="opt"
+                  ><input
+                    type="radio"
+                    name="tipo"
+                    value="textura"
+                    data-price="380"
+                    required
+                  /><span>Textura ou grafiato</span></label
+                >
+              </div>
+              <p class="q-err" hidden>Escolha uma opção para continuar.</p>
+            </fieldset>
+            <fieldset class="q" data-q="Qual é a área aproximada?">
+              <legend>Qual é a área aproximada?</legend>
+              <select
+                class="sel"
+                name="area"
+                aria-label="Qual é a área aproximada?"
+                required
+              >
+                <option value="">Selecione</option>
+                <option value="p">Até 20 m²</option>
+                <option value="m" data-price="200">20 a 50 m²</option>
+                <option value="g" data-price="500">50 a 100 m²</option>
+                <option value="gg" data-price="900">Mais de 100 m²</option>
+              </select>
+              <p class="q-err" hidden>Escolha uma opção para continuar.</p>
+            </fieldset>
+            <fieldset class="q" data-q="Como está a superfície hoje?">
+              <legend>Como está a superfície hoje?</legend>
+              <p class="hint">
+                A pintura só aguenta se a base estiver preparada.
+              </p>
+              <div class="opts">
+                <label class="opt"
+                  ><input
+                    type="radio"
+                    name="condicao"
+                    value="boa"
+                    required
+                  /><span>Em bom estado</span></label
+                >
+                <label class="opt"
+                  ><input
+                    type="radio"
+                    name="condicao"
+                    value="mofo"
+                    data-price="150"
+                    required
+                  /><span>Mofo ou infiltração</span></label
+                >
+                <label class="opt"
+                  ><input
+                    type="radio"
+                    name="condicao"
+                    value="rachada"
+                    data-price="120"
+                    required
+                  /><span>Descascando ou com rachaduras</span></label
+                >
+                <label class="opt"
+                  ><input
+                    type="radio"
+                    name="condicao"
+                    value="nsei"
+                    required
+                  /><span>Não sei avaliar</span></label
+                >
+              </div>
+              <p class="q-err" hidden>Escolha uma opção para continuar.</p>
+            </fieldset>
+            <fieldset class="q" data-q="Quem fornece a tinta?">
+              <legend>Quem fornece a tinta?</legend>
+              <div class="pills">
+                <label class="pill"
+                  ><input type="radio" name="tinta" value="eu" required /><span
+                    >Eu compro a tinta</span
+                  ></label
+                >
+                <label class="pill"
+                  ><input type="radio" name="tinta" value="pro" required /><span
+                    >O profissional leva e cobra à parte</span
+                  ></label
+                >
+              </div>
+              <p class="q-err" hidden>Escolha uma opção para continuar.</p>
+            </fieldset>
+            <fieldset class="q" data-q="O local está vazio ou com móveis?">
+              <legend>O local está vazio ou com móveis?</legend>
+              <div class="pills">
+                <label class="pill"
+                  ><input
+                    type="radio"
+                    name="mobilia"
+                    value="vazio"
+                    required
+                  /><span>Vazio</span></label
+                >
+                <label class="pill"
+                  ><input
+                    type="radio"
+                    name="mobilia"
+                    value="moveis"
+                    data-price="60"
+                    required
+                  /><span>Com móveis (precisa proteger)</span></label
+                >
+              </div>
+              <p class="q-err" hidden>Escolha uma opção para continuar.</p>
+            </fieldset>
+            <fieldset class="q" data-q="Qual é a altura do local?">
+              <legend>Qual é a altura do local?</legend>
+              <div class="pills">
+                <label class="pill"
+                  ><input
+                    type="radio"
+                    name="altura"
+                    value="normal"
+                    required
+                  /><span>Pé-direito normal</span></label
+                >
+                <label class="pill"
+                  ><input
+                    type="radio"
+                    name="altura"
+                    value="alto"
+                    data-price="100"
+                    required
+                  /><span
+                    >Alto (precisa de andaime ou escada grande)</span
+                  ></label
+                >
+              </div>
+              <p class="q-err" hidden>Escolha uma opção para continuar.</p>
+            </fieldset>
+
+            <fieldset class="q">
+              <legend>
+                <label for="problema"
+                  >Algum detalhe a mais?
+                  <span class="hint" style="font-weight: 400"
+                    >(opcional)</span
+                  ></label
+                >
+              </legend>
+              <textarea
+                class="field"
+                id="problema"
+                rows="3"
+                placeholder="Ex.: quarto de 12 m², parede com mancha perto da janela."
+              ></textarea>
+            </fieldset>
+            <div class="sec">
+              <div class="sec-h">
+                <div class="sec-t">Fotos e vídeos</div>
+                <div class="hint">Opcional </div>
+              </div>
+              <div class="media" id="media"></div>
+              <input
+                type="file"
+                id="file"
+                accept="image/*,video/*"
+                multiple
+                hidden
+              />
+            </div>
+            <div class="prefer">
+              <div class="av">
+                <svg class="i"><use href="#i-user" /></svg>
+              </div>
+              <div class="tx">
+                <b>Prefiro profissional mulher</b
+                ><span>Vale para agendar e para o pedido imediato.</span>
+              </div>
+              <button
+                type="button"
+                class="switch"
+                id="womenSwitch"
+                role="switch"
+                aria-checked="true"
+                aria-label="Preferir profissional mulher"
+              ></button>
+            </div>
+          </div>
+          <div class="foot">
+            <div class="est">
+              <span>Estimativa a partir de</span><b id="est">—</b>
+            </div>
+            <button
+              type="submit"
+              class="btn primary"
+              id="btnSched"
+              data-next="agendar.html"
+              data-mode="agendado"
+            >
+              <svg class="i"><use href="#i-calendar" /></svg>Agendar e escolher
+              o profissional
+            </button>
+            <button
+              type="submit"
+              class="btn outline"
+              id="btnNow"
+              data-next="hoje.html"
+              data-mode="hoje"
+            >
+              <svg class="i"><use href="#i-bolt" /></svg>Mais rápido possível
+            </button>
+          </div>
+        </form>
+      </main>
+    </div>
+    <script src="../js/fixup.js"></script>
+    <script>
+      const S = FX.state;
+      S.service = "pintura";
+      const urgent = S.intent === "hoje";
+      FX.initForm(document.getElementById("form"));
+      if (urgent) {
+        document.getElementById("urgentTag").hidden = false;
+        const a = document.getElementById("btnSched"),
+          b = document.getElementById("btnNow");
+        a.className = "btn outline";
+        b.className = "btn primary";
+        b.parentNode.insertBefore(b, a);
+      }
+      S.intent = null;
+      FX.save();
+    </script>
+  </body>
+</html>

@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, viewport-fit=cover"
+    />
+    <meta name="theme-color" content="#F7F6F1" />
+    <title>FIX UP – Aluguel de ferramentas</title>
+    <link rel="shortcut icon" href="image/logo.png" type="image/x-icon" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../css/styles.css" />
+  </head>
+  <body>
+    <div class="app">
+      <main class="screen">
+        <div class="body" style="gap: 14px; padding-top: 20px">
+          <h1 class="h1">Aluguel de ferramentas</h1>
+          <label class="search"
+            ><svg class="i" style="color: var(--muted)">
+              <use href="#i-search" /></svg
+            ><input
+              type="search"
+              id="toolQ"
+              aria-label="Buscar ferramenta"
+              placeholder="Buscar furadeira, escada..."
+          /></label>
+          <div class="scrollchips" id="toolCats"></div>
+          <div class="protect">
+            <b
+              ><svg class="i s18"><use href="#i-shield" /></svg>Proteção FIX UP
+              em todo aluguel</b
+            >
+            <p>
+              <svg class="i s16 thick"><use href="#i-check" /></svg>Checklist
+              com fotos na retirada e na devolução
+            </p>
+            <p>
+              <svg class="i s16 thick"><use href="#i-check" /></svg>Protótipo demonstrativo
+            </p>
+            
+          </div>
+          <div class="sec" style="gap: 12px" id="toolList"></div>
+          <div class="hint center">
+            Dados e valores ilustrativos do protótipo
+          </div>
+        </div>
+        <nav class="tabbar"></nav>
+      </main>
+    </div>
+    <script src="../js/fixup.js"></script>
+    <script>
+      FX.tabbar("ferramentas");
+      const S = FX.state,
+        { $ } = FX;
+      let cat = "Todas",
+        q = "";
+      function render() {
+        $("#toolCats").innerHTML = ["Todas", "Furadeiras", "Escadas", "Pintura"]
+          .map(
+            (c) =>
+              `<button class="chip" data-cat="${c}" aria-pressed="${c === cat}">${c}</button>`,
+          )
+          .join("");
+        const k = q.trim().toLowerCase();
+        const l = FX.TOOLS.filter(
+          (t) =>
+            (cat === "Todas" || t.cat === cat) &&
+            (!k || (t.name + " " + t.cat).toLowerCase().includes(k)),
+        );
+        $("#toolList").innerHTML = l.length
+          ? l
+              .map(
+                (t) => `
+    <article class="tool"><div class="th">${FX.icon(t.icon)}</div>
+      <div class="in"><b>${t.name}</b><small>${t.owner} · ${FX.km(t.km)} km · Estado: ${t.cond}</small><div class="pr">R$ ${t.price} por dia</div></div>
+      <a class="btn primary" href="checklist.html" data-rent="${t.id}" aria-label="Alugar ${t.name}">Alugar</a></article>`,
+              )
+              .join("")
+          : `<div class="empty">${FX.icon("search")}<b>Nada encontrado</b>Tente outro nome ou veja todas as categorias.</div>`;
+      }
+      $("#toolQ").addEventListener("input", (e) => {
+        q = e.target.value;
+        render();
+      });
+      document.addEventListener("click", (e) => {
+        const c = e.target.closest("[data-cat]");
+        if (c) {
+          cat = c.dataset.cat;
+          render();
+        }
+        const r = e.target.closest("[data-rent]");
+        if (r) {
+          S.tool = r.dataset.rent;
+          FX.save();
+        }
+      });
+      render();
+    </script>
+  </body>
+</html>

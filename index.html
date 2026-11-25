@@ -1,29 +1,146 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pt-BR">
-<head>
-  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#f7f6f1">
-  <title>FIX UP </title>
-  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="shortcut icon" href="logo.jpeg" type="image/x-icon">
-  <link rel="stylesheet" href="styles.css">
-  <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
-</head>
-<body>
-  <div class="app-shell">
-    <header class="topbar">
-      <a class="brand" href="#" data-page="home"><span class="brand-mark"><img src="logo.jpeg" class="logo"></span><span>FIX<span class="brand-light">UP</span></span></a>
-      <div class="top-actions"><button class="location" id="locationBtn"> <span>São Paulo, SP</span></button><button class="avatar" aria-label="Perfil">M</button></div>
-    </header>
-    <main id="app" aria-live="polite"></main>
-    <nav class="bottom-nav" aria-label="Navegação principal">
-      <button data-page="home" class="active"><span>⌂</span>Início</button>
-      <button data-page="professionals"><span>⌕</span>Profissionais</button>
-      <button data-page="orders"><span>▤</span>Pedidos</button>
-      <button data-page="profile"><span>◯</span>Perfil</button>
-    </nav>
-  </div>
-  <div class="toast" id="toast" role="status"></div>
-  <script src="app.js"></script>
-</body></html>
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, viewport-fit=cover"
+    />
+    <meta name="theme-color" content="#F7F6F1" />
+    <title>FIX UP – Início</title>
+    <link rel="shortcut icon" href="image/logo.png" type="image/x-icon" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+  <body>
+    <div class="app">
+      <main class="screen">
+        <div class="body home">
+          <div class="brand">
+            <div class="logo">
+              <div class="mark">
+                <img
+                  src="image/logo.png"
+                  alt="Logo FiXUP um martelo branco com fundo verde"
+                  class="mark-img"
+                />
+              </div>
+              <div><b>FIX</b><span>UP</span></div>
+            </div>
+            <div class="loc">
+              <svg class="i s16 thick"><use href="#i-pin" /></svg>São Paulo, SP
+            </div>
+          </div>
+          <div>
+            <div class="eyebrow">CUIDADO COM A SUA CASA</div>
+            <h1 class="hello">
+              Olá, Mariana.<br /><em>O que você precisa resolver hoje?</em>
+            </h1>
+          </div>
+          <div class="sec">
+            <div class="sec-t">Serviços</div>
+            <div class="svc-grid">
+              <a class="svc" href="pages/eletrica.html"
+                ><svg class="i s26"><use href="#i-bolt" /></svg
+                ><span>Elétrica</span></a
+              >
+              <a class="svc" href="pages/encanamento.html"
+                ><svg class="i s26"><use href="#i-drop" /></svg
+                ><span>Encanamento</span></a
+              >
+              <a class="svc" href="pages/pintura.html"
+                ><svg class="i s26"><use href="#i-roller" /></svg
+                ><span>Pintura</span></a
+              >
+              <a class="svc" href="pages/montagem.html"
+                ><svg class="i s26"><use href="#i-cube" /></svg
+                ><span>Montagem</span></a
+              >
+            </div>
+          </div>
+          <button class="promo dark" id="urgent">
+            <div class="ic">
+              <svg class="i s22 thick"><use href="#i-bolt" /></svg>
+            </div>
+            <div class="tx">
+              <b>Precisa para hoje?</b
+              ><span
+                >O primeiro profissional disponível aceita o seu pedido.</span
+              >
+            </div>
+            <svg class="i thick"><use href="#i-next" /></svg>
+          </button>
+          <a class="promo light" href="pages/ferramentas.html">
+            <div class="ic">
+              <svg class="i s22"><use href="#i-toolbox" /></svg>
+            </div>
+            <div class="tx">
+              <b>Alugue ferramentas</b><span>Com checklist de fotos</span>
+            </div>
+            <svg class="i thick"><use href="#i-next" /></svg>
+          </a>
+          <div class="trust">
+            <div>
+              <svg class="i s22"><use href="#i-shield" /></svg>Profissionais
+              verificados
+            </div>
+            <div>
+              <svg class="i s22"><use href="#i-star" /></svg>Avaliações reais
+              dos dois lados
+            </div>
+            <div>
+              <svg class="i s22"><use href="#i-tag" /></svg>Preço claro antes de
+              contratar
+            </div>
+          </div>
+        </div>
+        <nav class="tabbar"></nav>
+      </main>
+    </div>
+    <script src="js/fixup.js"></script>
+    <script>
+      FX.tabbar("inicio");
+      const S = FX.state;
+      const logo = new Image();
+      logo.src = "image/logo.png";
+      logo.alt = "FIX UP";
+      logo.className = "logo-img";
+      logo.onload = () => document.querySelector(".logo").replaceChildren(logo);
+      document.querySelectorAll(".svc").forEach((a) =>
+        a.addEventListener("click", () => {
+          S.intent = null;
+          FX.save();
+        }),
+      );
+      document.getElementById("urgent").addEventListener("click", () => {
+        const el = document.createElement("div");
+        el.className = "sheet";
+        el.setAttribute("role", "dialog");
+        el.setAttribute("aria-modal", "true");
+        el.setAttribute("aria-labelledby", "shT");
+        el.innerHTML =
+          '<div style="align-items:stretch;text-align:left"><h2 id="shT" tabindex="-1" style="text-align:center;margin-bottom:8px">Qual serviço para hoje?</h2>' +
+          FX.SERVICES.map(
+            (s) =>
+              `<a class="btn outline" href="${s.id}.html" data-s="${s.id}">${FX.icon(s.icon)}${s.label}</a>`,
+          ).join("") +
+          '<button class="btn ghost" type="button" id="cancel">Cancelar</button></div>';
+        document.querySelector(".app").append(el);
+        el.querySelector("#shT").focus();
+        el.addEventListener("click", (e) => {
+          if (e.target === el || e.target.closest("#cancel"))
+            return el.remove();
+          if (e.target.closest("[data-s]")) {
+            S.intent = "hoje";
+            FX.save();
+          }
+        });
+      });
+    </script>
+  </body>
+</html>

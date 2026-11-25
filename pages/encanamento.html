@@ -1,0 +1,347 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, viewport-fit=cover"
+    />
+    <meta name="theme-color" content="#F7F6F1" />
+    <title>FIX UP – Encanamento</title>
+    <link rel="shortcut icon" href="image/logo.png" type="image/x-icon" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../css/styles.css" />
+  </head>
+  <body>
+    <div class="app">
+      <main class="screen">
+        <header class="head">
+          <a class="back" id="back" href="../index.html" aria-label="Voltar"
+            ><img src="../image/logo.png" alt="Logo FiXUP um martelo branco com fundo verde" ></svg
+          ></a>
+          <div class="t">
+            <h1>Encanamento</h1>
+            <div class="sub">Passo 1 de 3 · conte o que precisa</div>
+          </div>
+        </header>
+        <form id="form" class="screen-form" style="display: contents">
+          <div class="body" style="gap: 22px">
+            <div
+              class="tag"
+              id="urgentTag"
+              hidden
+              style="align-self: flex-start"
+            >
+              <svg class="i s16 thick"><use href="#i-bolt" /></svg>Pedido para
+              hoje
+            </div>
+            <fieldset class="q" data-q="Qual é o problema?">
+              <legend>Qual é o problema?</legend>
+              <div class="opts">
+                <label class="opt"
+                  ><input
+                    type="radio"
+                    name="tipo"
+                    value="vazamento"
+                    data-price="150"
+                    required
+                  /><span>Vazamento</span></label
+                >
+                <label class="opt"
+                  ><input
+                    type="radio"
+                    name="tipo"
+                    value="entupimento"
+                    data-price="140"
+                    required
+                  /><span>Entupimento (pia, ralo ou vaso)</span></label
+                >
+                <label class="opt"
+                  ><input
+                    type="radio"
+                    name="tipo"
+                    value="torneira"
+                    data-price="120"
+                    required
+                  /><span>Trocar torneira, sifão ou chuveiro</span></label
+                >
+                <label class="opt"
+                  ><input
+                    type="radio"
+                    name="tipo"
+                    value="sanitario"
+                    data-price="200"
+                    required
+                  /><span>Instalar ou trocar vaso, pia ou tanque</span></label
+                >
+                <label class="opt"
+                  ><input
+                    type="radio"
+                    name="tipo"
+                    value="pressao"
+                    data-price="180"
+                    required
+                  /><span>Pouca pressão ou caixa d’água</span></label
+                >
+                <label class="opt"
+                  ><input
+                    type="radio"
+                    name="tipo"
+                    value="outro"
+                    data-price="150"
+                    required
+                  /><span>Outro problema hidráulico</span></label
+                >
+              </div>
+              <p class="q-err" hidden>Escolha uma opção para continuar.</p>
+            </fieldset>
+            <fieldset class="q" data-q="Onde está o problema?">
+              <legend>Onde está o problema?</legend>
+              <div class="pills">
+                <label class="pill"
+                  ><input
+                    type="radio"
+                    name="local"
+                    value="cozinha"
+                    required
+                  /><span>Cozinha</span></label
+                >
+                <label class="pill"
+                  ><input
+                    type="radio"
+                    name="local"
+                    value="banheiro"
+                    required
+                  /><span>Banheiro</span></label
+                >
+                <label class="pill"
+                  ><input
+                    type="radio"
+                    name="local"
+                    value="lavanderia"
+                    required
+                  /><span>Lavanderia</span></label
+                >
+                <label class="pill"
+                  ><input
+                    type="radio"
+                    name="local"
+                    value="externa"
+                    required
+                  /><span>Área externa</span></label
+                >
+              </div>
+              <p class="q-err" hidden>Escolha uma opção para continuar.</p>
+            </fieldset>
+            <fieldset class="q" data-q="Está vazando água agora?">
+              <legend>Está vazando água agora?</legend>
+              <div class="pills">
+                <label class="pill"
+                  ><input
+                    type="radio"
+                    name="vazando"
+                    value="sim"
+                    required
+                  /><span>Sim</span></label
+                >
+                <label class="pill"
+                  ><input
+                    type="radio"
+                    name="vazando"
+                    value="nao"
+                    required
+                  /><span>Não</span></label
+                >
+              </div>
+              <p class="q-err" hidden>Escolha uma opção para continuar.</p>
+            </fieldset>
+            <div class="tip" role="note" data-showif="vazando=sim" hidden>
+              <svg class="i s18"><use href="#i-warn" /></svg>
+              <div>
+                Feche o registro mais próximo ou o registro geral para evitar
+                desperdício e dano ao piso.
+              </div>
+            </div>
+            <fieldset class="q" data-q="Você consegue fechar o registro?">
+              <legend>Você consegue fechar o registro?</legend>
+              <div class="opts">
+                <label class="opt"
+                  ><input
+                    type="radio"
+                    name="registro"
+                    value="sim"
+                    required
+                  /><span>Sim, sei onde fica</span></label
+                >
+                <label class="opt"
+                  ><input
+                    type="radio"
+                    name="registro"
+                    value="nao"
+                    required
+                  /><span>Não consigo ou não sei onde fica</span></label
+                >
+              </div>
+              <p class="q-err" hidden>Escolha uma opção para continuar.</p>
+            </fieldset>
+            <fieldset class="q" data-q="A tubulação é aparente ou embutida?">
+              <legend>A tubulação é aparente ou embutida?</legend>
+              <p class="hint">
+                Embutida é a que passa dentro da parede ou do piso.
+              </p>
+              <div class="pills">
+                <label class="pill"
+                  ><input
+                    type="radio"
+                    name="tubo"
+                    value="aparente"
+                    required
+                  /><span>Aparente</span></label
+                >
+                <label class="pill"
+                  ><input
+                    type="radio"
+                    name="tubo"
+                    value="embutida"
+                    data-price="80"
+                    required
+                  /><span>Embutida</span></label
+                >
+                <label class="pill"
+                  ><input type="radio" name="tubo" value="nsei" required /><span
+                    >Não sei</span
+                  ></label
+                >
+              </div>
+              <p class="q-err" hidden>Escolha uma opção para continuar.</p>
+            </fieldset>
+            <fieldset class="q" data-q="Quem fornece o material?">
+              <legend>Quem fornece o material?</legend>
+              <div class="opts">
+                <label class="opt"
+                  ><input
+                    type="radio"
+                    name="material"
+                    value="eu"
+                    required
+                  /><span>Eu já tenho a peça ou o material</span></label
+                >
+                <label class="opt"
+                  ><input
+                    type="radio"
+                    name="material"
+                    value="pro"
+                    required
+                  /><span>O profissional leva e cobra à parte</span></label
+                >
+                <label class="opt"
+                  ><input
+                    type="radio"
+                    name="material"
+                    value="nsei"
+                    required
+                  /><span>Preciso de orientação</span></label
+                >
+              </div>
+              <p class="q-err" hidden>Escolha uma opção para continuar.</p>
+            </fieldset>
+
+            <fieldset class="q">
+              <legend>
+                <label for="problema"
+                  >Algum detalhe a mais?
+                  <span class="hint" style="font-weight: 400"
+                    >(opcional)</span
+                  ></label
+                >
+              </legend>
+              <textarea
+                class="field"
+                id="problema"
+                rows="3"
+                placeholder="Ex.: a pia da cozinha vaza embaixo, perto do sifão."
+              ></textarea>
+            </fieldset>
+            <div class="sec">
+              <div class="sec-h">
+                <div class="sec-t">Fotos e vídeos</div>
+                <div class="hint">Opcional · ajuda a estimar o preço</div>
+              </div>
+              <div class="media" id="media"></div>
+              <input
+                type="file"
+                id="file"
+                accept="image/*,video/*"
+                multiple
+                hidden
+              />
+            </div>
+            <div class="prefer">
+              <div class="av">
+                <svg class="i"><use href="#i-user" /></svg>
+              </div>
+              <div class="tx">
+                <b>Prefiro profissional mulher</b
+                ><span>Vale para agendar e para o pedido imediato.</span>
+              </div>
+              <button
+                type="button"
+                class="switch"
+                id="womenSwitch"
+                role="switch"
+                aria-checked="true"
+                aria-label="Preferir profissional mulher"
+              ></button>
+            </div>
+          </div>
+          <div class="foot">
+            <div class="est">
+              <span>Estimativa a partir de</span><b id="est">—</b>
+            </div>
+            <button
+              type="submit"
+              class="btn primary"
+              id="btnSched"
+              data-next="agendar.html"
+              data-mode="agendado"
+            >
+              <svg class="i"><use href="#i-calendar" /></svg>Agendar e escolher
+              o profissional
+            </button>
+            <button
+              type="submit"
+              class="btn outline"
+              id="btnNow"
+              data-next="hoje.html"
+              data-mode="hoje"
+            >
+              <svg class="i"><use href="#i-bolt" /></svg>Mais rápido possível
+            </button>
+          </div>
+        </form>
+      </main>
+    </div>
+    <script src="../js/fixup.js"></script>
+    <script>
+      const S = FX.state;
+      S.service = "encanamento";
+      const urgent = S.intent === "hoje";
+      FX.initForm(document.getElementById("form"));
+      if (urgent) {
+        document.getElementById("urgentTag").hidden = false;
+        const a = document.getElementById("btnSched"),
+          b = document.getElementById("btnNow");
+        a.className = "btn outline";
+        b.className = "btn primary";
+        b.parentNode.insertBefore(b, a);
+      }
+      S.intent = null;
+      FX.save();
+    </script>
+  </body>
+</html>

@@ -1,0 +1,361 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, viewport-fit=cover"
+    />
+    <meta name="theme-color" content="#F7F6F1" />
+    <title>FIX UP – Elétrica</title>
+    <link rel="shortcut icon" href="image/logo.png" type="image/x-icon" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../css/styles.css" />
+  </head>
+  <body>
+    <div class="app">
+      <main class="screen">
+        <header class="head">
+          <a class="back" id="back" href="../index.html" aria-label="Voltar"
+            ><img src="../image/logo.png" alt="Logo FiXUP um martelo branco com fundo verde" ></svg
+          ></a>
+          <div class="t">
+            <h1>Elétrica</h1>
+            <div class="sub">Passo 1 de 3 · conte o que precisa</div>
+          </div>
+        </header>
+        <form id="form" class="screen-form" style="display: contents">
+          <div class="body" style="gap: 22px">
+            <div
+              class="tag"
+              id="urgentTag"
+              hidden
+              style="align-self: flex-start"
+            >
+              <svg class="i s16 thick"><use href="#i-bolt" /></svg>Pedido para
+              hoje
+            </div>
+            <fieldset class="q" data-q="Qual serviço você precisa?">
+              <legend>Qual serviço você precisa?</legend>
+              <div class="opts">
+                <label class="opt"
+                  ><input
+                    type="radio"
+                    name="tipo"
+                    value="tomada"
+                    data-price="120"
+                    required
+                  /><span>Trocar tomada ou interruptor</span></label
+                >
+                <label class="opt"
+                  ><input
+                    type="radio"
+                    name="tipo"
+                    value="chuveiro"
+                    data-price="160"
+                    required
+                  /><span>Instalar ou trocar chuveiro</span></label
+                >
+                <label class="opt"
+                  ><input
+                    type="radio"
+                    name="tipo"
+                    value="luminaria"
+                    data-price="150"
+                    required
+                  /><span>Instalar luminária, ventilador ou lustre</span></label
+                >
+                <label class="opt"
+                  ><input
+                    type="radio"
+                    name="tipo"
+                    value="disjuntor"
+                    data-price="190"
+                    required
+                  /><span>Disjuntor desarmando ou falta de energia</span></label
+                >
+                <label class="opt"
+                  ><input
+                    type="radio"
+                    name="tipo"
+                    value="ponto"
+                    data-price="200"
+                    required
+                  /><span>Criar ponto novo de tomada ou luz</span></label
+                >
+                <label class="opt"
+                  ><input
+                    type="radio"
+                    name="tipo"
+                    value="outro"
+                    data-price="150"
+                    required
+                  /><span>Outro serviço elétrico</span></label
+                >
+              </div>
+              <p class="q-err" hidden>Escolha uma opção para continuar.</p>
+            </fieldset>
+            <fieldset
+              class="q"
+              data-q="O local já possui a instalação necessária?"
+            >
+              <legend>O local já possui a instalação necessária?</legend>
+              <p class="hint">
+                Fiação e ponto de energia no lugar onde o serviço será feito.
+              </p>
+              <div class="opts">
+                <label class="opt"
+                  ><input
+                    type="radio"
+                    name="instalacao"
+                    value="sim"
+                    required
+                  /><span>Sim, a fiação e o ponto já existem</span></label
+                >
+                <label class="opt"
+                  ><input
+                    type="radio"
+                    name="instalacao"
+                    value="nao"
+                    data-price="90"
+                    required
+                  /><span>Não, precisa passar fiação nova</span></label
+                >
+                <label class="opt"
+                  ><input
+                    type="radio"
+                    name="instalacao"
+                    value="nsei"
+                    required
+                  /><span>Não sei dizer</span></label
+                >
+              </div>
+              <p class="q-err" hidden>Escolha uma opção para continuar.</p>
+            </fieldset>
+            <fieldset class="q" data-q="Quantos pontos serão atendidos?">
+              <legend>Quantos pontos serão atendidos?</legend>
+              <div class="stp">
+                <button type="button" data-step="-1" aria-label="Diminuir">
+                  <svg class="i"><use href="#i-minus" /></svg></button
+                ><input
+                  type="number"
+                  name="qtd"
+                  value="1"
+                  min="1"
+                  max="20"
+                  readonly
+                  data-unit="40"
+                  data-suffix="ponto(s)"
+                  aria-label="Quantos pontos serão atendidos?"
+                /><button type="button" data-step="1" aria-label="Aumentar">
+                  <svg class="i"><use href="#i-plus" /></svg>
+                </button>
+              </div>
+            </fieldset>
+            <fieldset class="q" data-q="Tipo de imóvel">
+              <legend>Tipo de imóvel</legend>
+              <div class="pills">
+                <label class="pill"
+                  ><input
+                    type="radio"
+                    name="imovel"
+                    value="casa"
+                    required
+                  /><span>Casa</span></label
+                >
+                <label class="pill"
+                  ><input
+                    type="radio"
+                    name="imovel"
+                    value="apto"
+                    required
+                  /><span>Apartamento</span></label
+                >
+                <label class="pill"
+                  ><input
+                    type="radio"
+                    name="imovel"
+                    value="comercio"
+                    required
+                  /><span>Comércio</span></label
+                >
+              </div>
+              <p class="q-err" hidden>Escolha uma opção para continuar.</p>
+            </fieldset>
+            <fieldset class="q" data-q="Qual é a tensão da tomada?">
+              <legend>Qual é a tensão da tomada?</legend>
+              <div class="pills">
+                <label class="pill"
+                  ><input
+                    type="radio"
+                    name="tensao"
+                    value="127"
+                    required
+                  /><span>127 V</span></label
+                >
+                <label class="pill"
+                  ><input
+                    type="radio"
+                    name="tensao"
+                    value="220"
+                    required
+                  /><span>220 V</span></label
+                >
+                <label class="pill"
+                  ><input
+                    type="radio"
+                    name="tensao"
+                    value="nsei"
+                    required
+                  /><span>Não sei</span></label
+                >
+              </div>
+              <p class="q-err" hidden>Escolha uma opção para continuar.</p>
+            </fieldset>
+            <fieldset class="q" data-q="Quem fornece o material?">
+              <legend>Quem fornece o material?</legend>
+              <div class="opts">
+                <label class="opt"
+                  ><input
+                    type="radio"
+                    name="material"
+                    value="eu"
+                    required
+                  /><span>Eu já tenho o material</span></label
+                >
+                <label class="opt"
+                  ><input
+                    type="radio"
+                    name="material"
+                    value="pro"
+                    required
+                  /><span>O profissional leva e cobra à parte</span></label
+                >
+                <label class="opt"
+                  ><input
+                    type="radio"
+                    name="material"
+                    value="nsei"
+                    required
+                  /><span>Preciso de orientação</span></label
+                >
+              </div>
+              <p class="q-err" hidden>Escolha uma opção para continuar.</p>
+            </fieldset>
+            <fieldset class="q" data-q="Algum alerta de segurança agora?">
+              <legend>Algum alerta de segurança agora?</legend>
+              <div class="opts">
+                <label class="opt"
+                  ><input type="checkbox" name="risco" value="sim" /><span
+                    >Cheiro de queimado, faísca ou fios aquecendo</span
+                  ></label
+                >
+              </div>
+            </fieldset>
+            <div class="tip" role="note" data-showif="risco=sim" hidden>
+              <svg class="i s18"><use href="#i-warn" /></svg>
+              <div>
+                Desligue o disjuntor geral e não use o ponto até o profissional
+                chegar. Se houver fogo ou choque, ligue 193.
+              </div>
+            </div>
+
+            <fieldset class="q">
+              <legend>
+                <label for="problema"
+                  >Algum detalhe a mais?
+                  <span class="hint" style="font-weight: 400"
+                    >(opcional)</span
+                  ></label
+                >
+              </legend>
+              <textarea
+                class="field"
+                id="problema"
+                rows="3"
+                placeholder="Ex.: a tomada da sala esquenta quando ligo o ferro."
+              ></textarea>
+            </fieldset>
+            <div class="sec">
+              <div class="sec-h">
+                <div class="sec-t">Fotos e vídeos</div>
+                <div class="hint">Opcional</div>
+              </div>
+              <div class="media" id="media"></div>
+              <input
+                type="file"
+                id="file"
+                accept="image/*,video/*"
+                multiple
+                hidden
+              />
+            </div>
+            <div class="prefer">
+              <div class="av">
+                <svg class="i"><use href="#i-user" /></svg>
+              </div>
+              <div class="tx">
+                <b>Prefiro profissional mulher</b
+                ><span>Vale para agendar e para o pedido imediato.</span>
+              </div>
+              <button
+                type="button"
+                class="switch"
+                id="womenSwitch"
+                role="switch"
+                aria-checked="true"
+                aria-label="Preferir profissional mulher"
+              ></button>
+            </div>
+          </div>
+          <div class="foot">
+            <div class="est">
+              <span>Estimativa a partir de</span><b id="est">—</b>
+            </div>
+            <button
+              type="submit"
+              class="btn primary"
+              id="btnSched"
+              data-next="agendar.html"
+              data-mode="agendado"
+            >
+              <svg class="i"><use href="#i-calendar" /></svg>Agendar e escolher
+              o profissional
+            </button>
+            <button
+              type="submit"
+              class="btn outline"
+              id="btnNow"
+              data-next="hoje.html"
+              data-mode="hoje"
+            >
+              <svg class="i"><use href="#i-bolt" /></svg>Mais rápido possível
+            </button>
+          </div>
+        </form>
+      </main>
+    </div>
+    <script src="../js/fixup.js"></script>
+    <script>
+      const S = FX.state;
+      S.service = "eletrica";
+      const urgent = S.intent === "hoje";
+      FX.initForm(document.getElementById("form"));
+      if (urgent) {
+        document.getElementById("urgentTag").hidden = false;
+        const a = document.getElementById("btnSched"),
+          b = document.getElementById("btnNow");
+        a.className = "btn outline";
+        b.className = "btn primary";
+        b.parentNode.insertBefore(b, a);
+      }
+      S.intent = null;
+      FX.save();
+    </script>
+  </body>
+</html>

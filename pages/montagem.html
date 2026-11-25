@@ -1,0 +1,336 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, viewport-fit=cover"
+    />
+    <meta name="theme-color" content="#F7F6F1" />
+    <title>FIX UP – Montagem</title>
+    <link rel="shortcut icon" href="../image/logo.png" type="image/x-icon" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../css/styles.css" />
+  </head>
+  <body>
+    <div class="app">
+      <main class="screen">
+        <header class="head">
+          <a class="back" id="back" href="../index.html" aria-label="Voltar"
+            ><svg class="i thick"><use href="#i-back" /></svg
+          ></a>
+          <div class="t">
+            <h1>Montagem</h1>
+            <div class="sub">Passo 1 de 3 · conte o que precisa</div>
+          </div>
+        </header>
+        <form id="form" class="screen-form" style="display: contents">
+          <div class="body" style="gap: 22px">
+            <div
+              class="tag"
+              id="urgentTag"
+              hidden
+              style="align-self: flex-start"
+            >
+              <svg class="i s16 thick"><use href="#i-bolt" /></svg>Pedido para
+              hoje
+            </div>
+            <fieldset class="q" data-q="O que precisa ser montado?">
+              <legend>O que precisa ser montado?</legend>
+              <div class="opts">
+                <label class="opt"
+                  ><input
+                    type="radio"
+                    name="tipo"
+                    value="guarda"
+                    data-price="180"
+                    required
+                  /><span>Guarda-roupa</span></label
+                >
+                <label class="opt"
+                  ><input
+                    type="radio"
+                    name="tipo"
+                    value="cama"
+                    data-price="120"
+                    required
+                  /><span>Cama ou beliche</span></label
+                >
+                <label class="opt"
+                  ><input
+                    type="radio"
+                    name="tipo"
+                    value="estante"
+                    data-price="140"
+                    required
+                  /><span>Estante ou rack</span></label
+                >
+                <label class="opt"
+                  ><input
+                    type="radio"
+                    name="tipo"
+                    value="mesa"
+                    data-price="100"
+                    required
+                  /><span>Mesa ou escrivaninha</span></label
+                >
+                <label class="opt"
+                  ><input
+                    type="radio"
+                    name="tipo"
+                    value="armario"
+                    data-price="250"
+                    required
+                  /><span>Armário de cozinha ou banheiro</span></label
+                >
+                <label class="opt"
+                  ><input
+                    type="radio"
+                    name="tipo"
+                    value="outro"
+                    data-price="140"
+                    required
+                  /><span>Outro móvel</span></label
+                >
+              </div>
+              <p class="q-err" hidden>Escolha uma opção para continuar.</p>
+            </fieldset>
+            <fieldset class="q" data-q="Quantos móveis?">
+              <legend>Quantos móveis?</legend>
+              <div class="stp">
+                <button type="button" data-step="-1" aria-label="Diminuir">
+                  <svg class="i"><use href="#i-minus" /></svg></button
+                ><input
+                  type="number"
+                  name="qtd"
+                  value="1"
+                  min="1"
+                  max="10"
+                  readonly
+                  data-unit="70"
+                  data-suffix="móvel(is)"
+                  aria-label="Quantos móveis?"
+                /><button type="button" data-step="1" aria-label="Aumentar">
+                  <svg class="i"><use href="#i-plus" /></svg>
+                </button>
+              </div>
+            </fieldset>
+            <fieldset
+              class="q"
+              data-q="Os móveis já estão em casa, com manual e peças?"
+            >
+              <legend>Os móveis já estão em casa, com manual e peças?</legend>
+              <div class="pills">
+                <label class="pill"
+                  ><input type="radio" name="caixa" value="sim" required /><span
+                    >Sim, tudo completo</span
+                  ></label
+                >
+                <label class="pill"
+                  ><input
+                    type="radio"
+                    name="caixa"
+                    value="falta"
+                    required
+                  /><span>Faltam peças ou manual</span></label
+                >
+              </div>
+              <p class="q-err" hidden>Escolha uma opção para continuar.</p>
+            </fieldset>
+            <fieldset class="q" data-q="Precisa fixar na parede?">
+              <legend>Precisa fixar na parede?</legend>
+              <p class="hint">
+                Furar a parede exige furadeira e bucha certa para o tipo de
+                parede.
+              </p>
+              <div class="pills">
+                <label class="pill"
+                  ><input
+                    type="radio"
+                    name="parede"
+                    value="sim"
+                    data-price="40"
+                    required
+                  /><span>Sim</span></label
+                >
+                <label class="pill"
+                  ><input
+                    type="radio"
+                    name="parede"
+                    value="nao"
+                    required
+                  /><span>Não</span></label
+                >
+              </div>
+              <p class="q-err" hidden>Escolha uma opção para continuar.</p>
+            </fieldset>
+            <fieldset
+              class="q"
+              data-q="Qual é o tipo de parede?"
+              data-showif="parede=sim"
+              hidden
+            >
+              <legend>Qual é o tipo de parede?</legend>
+              <div class="pills">
+                <label class="pill"
+                  ><input
+                    type="radio"
+                    name="tparede"
+                    value="alvenaria"
+                    required
+                  /><span>Alvenaria</span></label
+                >
+                <label class="pill"
+                  ><input
+                    type="radio"
+                    name="tparede"
+                    value="drywall"
+                    required
+                  /><span>Drywall</span></label
+                >
+                <label class="pill"
+                  ><input
+                    type="radio"
+                    name="tparede"
+                    value="nsei"
+                    required
+                  /><span>Não sei</span></label
+                >
+              </div>
+              <p class="q-err" hidden>Escolha uma opção para continuar.</p>
+            </fieldset>
+            <fieldset class="q" data-q="Como é o acesso ao local?">
+              <legend>Como é o acesso ao local?</legend>
+              <div class="pills">
+                <label class="pill"
+                  ><input
+                    type="radio"
+                    name="acesso"
+                    value="terreo"
+                    required
+                  /><span>Térreo ou elevador</span></label
+                >
+                <label class="pill"
+                  ><input
+                    type="radio"
+                    name="acesso"
+                    value="escada"
+                    required
+                  /><span>Só por escada</span></label
+                >
+              </div>
+              <p class="q-err" hidden>Escolha uma opção para continuar.</p>
+            </fieldset>
+            <fieldset class="q" data-q="Mais alguma coisa?">
+              <legend>Mais alguma coisa?</legend>
+              <div class="opts">
+                <label class="opt"
+                  ><input
+                    type="checkbox"
+                    name="desmontar"
+                    value="sim"
+                    data-price="60"
+                  /><span>Desmontar e levar o móvel antigo</span></label
+                >
+              </div>
+            </fieldset>
+
+            <fieldset class="q">
+              <legend>
+                <label for="problema"
+                  >Algum detalhe a mais?
+                  <span class="hint" style="font-weight: 400"
+                    >(opcional)</span
+                  ></label
+                >
+              </legend>
+              <textarea
+                class="field"
+                id="problema"
+                rows="3"
+                placeholder="Ex.: guarda-roupa de 6 portas, tem criança pequena no quarto."
+              ></textarea>
+            </fieldset>
+            <div class="sec">
+              <div class="sec-h">
+                <div class="sec-t">Fotos e vídeos</div>
+                <div class="hint">Opcional</div>
+              </div>
+              <div class="media" id="media"></div>
+              <input
+                type="file"
+                id="file"
+                accept="image/*,video/*"
+                multiple
+                hidden
+              />
+            </div>
+            <div class="prefer">
+              <div class="av">
+                <svg class="i"><use href="#i-user" /></svg>
+              </div>
+              <div class="tx">
+                <b>Prefiro profissional mulher</b
+                ><span>Vale para agendar e para o pedido imediato.</span>
+              </div>
+              <button
+                type="button"
+                class="switch"
+                id="womenSwitch"
+                role="switch"
+                aria-checked="true"
+                aria-label="Preferir profissional mulher"
+              ></button>
+            </div>
+          </div>
+          <div class="foot">
+            <div class="est">
+              <span>Estimativa a partir de</span><b id="est">—</b>
+            </div>
+            <button
+              type="submit"
+              class="btn primary"
+              id="btnSched"
+              data-next="agendar.html"
+              data-mode="agendado"
+            >
+              <svg class="i"><use href="#i-calendar" /></svg>Agendar e escolher
+              o profissional
+            </button>
+            <button
+              type="submit"
+              class="btn outline"
+              id="btnNow"
+              data-next="hoje.html"
+              data-mode="hoje"
+            >
+              <svg class="i"><use href="#i-bolt" /></svg>Mais rápido possível
+            </button>
+          </div>
+        </form>
+      </main>
+    </div>
+    <script src="../js/fixup.js"></script>
+    <script>
+      const S = FX.state;
+      S.service = "montagem";
+      const urgent = S.intent === "hoje";
+      FX.initForm(document.getElementById("form"));
+      if (urgent) {
+        document.getElementById("urgentTag").hidden = false;
+        const a = document.getElementById("btnSched"),
+          b = document.getElementById("btnNow");
+        a.className = "btn outline";
+        b.className = "btn primary";
+        b.parentNode.insertBefore(b, a);
+      }
+      S.intent = null;
+      FX.save();
+    </script>
+  </body>
+</html>

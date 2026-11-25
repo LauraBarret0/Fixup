@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, viewport-fit=cover"
+    />
+    <meta name="theme-color" content="#F7F6F1" />
+    <title>FIX UP – Pedidos</title>
+    <link rel="shortcut icon" href="../image/logo.png" type="image/x-icon" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../css/styles.css" />
+  </head>
+  <body>
+    <div class="app">
+      <main class="screen">
+        <div class="body" style="gap: 14px; padding-top: 20px">
+          <h1 class="h1">Meus pedidos</h1>
+          <div class="sec" style="gap: 12px" id="orderList"></div>
+        </div>
+        <nav class="tabbar"></nav>
+      </main>
+    </div>
+    <script src="../js/fixup.js"></script>
+    <script>
+      FX.tabbar("pedidos");
+      const o = FX.state.orders;
+      FX.$("#orderList").innerHTML = o.length
+        ? o
+            .map(
+              (x) =>
+                `<article class="order"><div class="ic">${FX.icon(x.icon)}</div><div class="in"><b>${x.title}</b><small>${x.sub}</small></div><span class="st">${x.st}</span></article>`,
+            )
+            .join("")
+        : `<div class="empty">${FX.icon("list")}<b>Nenhum pedido ainda</b>Quando você contratar um serviço ou alugar uma ferramenta, ele aparece aqui.<a class="btn primary sm" style="padding:0 20px;margin-top:6px" href="index.html">Fazer um pedido</a></div>`;
+    </script>
+  </body>
+</html>
