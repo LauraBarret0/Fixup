@@ -127,7 +127,7 @@
           '<div style="align-items:stretch;text-align:left"><h2 id="shT" tabindex="-1" style="text-align:center;margin-bottom:8px">Qual serviço para hoje?</h2>' +
           FX.SERVICES.map(
             (s) =>
-              `<a class="btn outline" href="${s.id}.html" data-s="${s.id}">${FX.icon(s.icon)}${s.label}</a>`,
+              `<a class="btn outline" href="pages/${s.id}.html" data-s="${s.id}">${FX.icon(s.icon)}${s.label}</a>`,
           ).join("") +
           '<button class="btn ghost" type="button" id="cancel">Cancelar</button></div>';
         document.querySelector(".app").append(el);
