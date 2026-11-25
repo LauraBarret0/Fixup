@@ -1912,3 +1912,11 @@ a.promo {
   width: auto;
   display: block;
 }
+
+/* ---------- Estrelas do cliente ---------- */
+.stars{display:flex;align-items:center;gap:8px;margin-top:6px}
+.stars b{font-size:15px;font-weight:600;font-variant-numeric:tabular-nums}
+.stars-row{position:relative;display:inline-flex;gap:2px}
+.stars-row .i{width:18px;height:18px;flex:none;fill:var(--line);stroke:var(--line-strong);stroke-width:1.5}
+.stars-fill{position:absolute;inset:0 auto 0 0;display:flex;gap:2px;overflow:hidden}
+.stars-fill .i{fill:var(--star);stroke:var(--star-line)}

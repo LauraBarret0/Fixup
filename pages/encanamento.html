@@ -22,7 +22,7 @@
       <main class="screen">
         <header class="head">
           <a class="back" id="back" href="../index.html" aria-label="Voltar"
-            ><img src="../image/logo.png" alt="Logo FiXUP um martelo branco com fundo verde" ></svg
+            ><svg class="i thick"><use href="#i-back" /></svg
           ></a>
           <div class="t">
             <h1>Encanamento</h1>
@@ -220,7 +220,7 @@
               </div>
               <p class="q-err" hidden>Escolha uma opção para continuar.</p>
             </fieldset>
-            <fieldset class="q" data-q="Quem fornece o material?">
+            <!-- <fieldset class="q" data-q="Quem fornece o material?">
               <legend>Quem fornece o material?</legend>
               <div class="opts">
                 <label class="opt"
@@ -249,7 +249,9 @@
                 >
               </div>
               <p class="q-err" hidden>Escolha uma opção para continuar.</p>
-            </fieldset>
+            </fieldset> -->
+
+            <div class="note"><svg class="i s22"><use href="#i-toolbox"/></svg><div><b>Ferramentas e material</b>O profissional leva as ferramentas dele. Qualquer material ou peça que o serviço precisar (torneira, sifão, vedantes, canos) é comprado por você.</div></div>
 
             <fieldset class="q">
               <legend>
@@ -270,7 +272,7 @@
             <div class="sec">
               <div class="sec-h">
                 <div class="sec-t">Fotos e vídeos</div>
-                <div class="hint">Opcional · ajuda a estimar o preço</div>
+                <div class="hint">Opcional</div>
               </div>
               <div class="media" id="media"></div>
               <input
@@ -300,9 +302,7 @@
             </div>
           </div>
           <div class="foot">
-            <div class="est">
-              <span>Estimativa a partir de</span><b id="est">—</b>
-            </div>
+            <div class="est"><span>Valor do serviço</span><b id="est">—</b></div>
             <button
               type="submit"
               class="btn primary"

@@ -69,7 +69,7 @@
         FX.back("agendar.html");
         $("#prSub").textContent = `${FX.whenText()} · ${FX.svc().label}`;
         $("#rcTitle").textContent = FX.summaryLine();
-        $("#rcSub").textContent = "" + FX.brl(FX.price());
+        $('#rcSub').textContent = 'Valor do serviço: ' + FX.brl(FX.price());
         $("#rush").onclick = () => {
           S.mode = "hoje";
           FX.save();

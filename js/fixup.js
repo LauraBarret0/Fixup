@@ -310,6 +310,8 @@
   };
 
   /* ---------- Fotos reais (pasta image/) ---------- */
+  /* ---------- Perfil do cliente (dados ilustrativos) ---------- */
+  FX.CLIENT = { name: 'Mariana', ini: 'MA', rating: 4.9 };   // nota de 0 a 5, vinda das avaliações dos profissionais
   FX.IMG = "../image/"; // pasta das imagens, relativa às páginas .html
   FX.PORTFOLIO_COUNT = 2; // quantas fotos de portfólio por profissional (camila1.jpg, camila2.jpg...)
   FX.photos = (p) =>
@@ -381,17 +383,17 @@
 
     const links = inPages
       ? {
-          inicio: "../index.html",
-          pedidos: "pedidos.html",
-          ferramentas: "ferramentas.html",
-          conta: "conta.html",
-        }
+        inicio: "../index.html",
+        pedidos: "pedidos.html",
+        ferramentas: "ferramentas.html",
+        conta: "conta.html",
+      }
       : {
-          inicio: "index.html",
-          pedidos: "pages/pedidos.html",
-          ferramentas: "pages/ferramentas.html",
-          conta: "pages/conta.html",
-        };
+        inicio: "index.html",
+        pedidos: "pages/pedidos.html",
+        ferramentas: "pages/ferramentas.html",
+        conta: "pages/conta.html",
+      };
 
     nav.innerHTML = [
       ["inicio", "home", "Início"],
@@ -401,8 +403,7 @@
     ]
       .map(
         ([id, ic, label]) =>
-          `<a class="tab" href="${links[id]}" ${
-            id === active ? 'aria-current="page"' : ""
+          `<a class="tab" href="${links[id]}" ${id === active ? 'aria-current="page"' : ""
           }>${FX.icon(ic, "s24")}${label}</a>`,
       )
       .join("");
