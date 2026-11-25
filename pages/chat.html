@@ -265,7 +265,7 @@
       { $ } = FX;
     const pro = FX.pro();
     FX.back(S.mode === "hoje" ? "hoje.html" : "perfil.html");
-    $("#avatar").textContent = pro.ini;
+    FX.setAvatar($('#avatar'), pro);
     $("#name").textContent = pro.name;
     $("#status").textContent = "Online agora · " + FX.proRole(pro);
 

@@ -1920,3 +1920,7 @@ a.promo {
 .stars-row .i{width:18px;height:18px;flex:none;fill:var(--line);stroke:var(--line-strong);stroke-width:1.5}
 .stars-fill{position:absolute;inset:0 auto 0 0;display:flex;gap:2px;overflow:hidden}
 .stars-fill .i{fill:var(--star);stroke:var(--star-line)}
+
+/* ---------- Foto no avatar ---------- */
+.avatar{position:relative;overflow:hidden}
+.avatar img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}

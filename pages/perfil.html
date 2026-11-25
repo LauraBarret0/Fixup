@@ -57,11 +57,11 @@
         s = FX.svc();
       FX.back(S.mode === "hoje" ? "hoje.html" : "profissionais.html");
       $("#perfilBody").innerHTML = `
-  <div class="ph"><div class="avatar lg">${p.ini}</div><div style="min-width:0"><h2>${p.name}</h2><div class="role">${FX.proRole(p)} · São Paulo, SP</div>
+  <div class="ph"><div class="avatar lg">${FX.avatar(p, 'lg')}</div><div style="min-width:0"><h2>${p.name}</h2><div class="role">${FX.proRole(p)} · São Paulo, SP</div>
     <div class="tags"><span class="tag mint">${FX.icon("check", "s14 thick")}Identidade</span><span class="tag mint">${FX.icon("check", "s14 thick")}Cursos</span></div></div></div>
   <div class="stats"><div><b>${FX.icon("star", "s16 star")}${FX.rate(p.rating)}</b><span>Avaliação</span></div><div><b>${p.n}</b><span>Serviços</span></div><div><b>${FX.km(p.km)} km</b><span>De você</span></div></div>
 
-    <div class="sec"><div class="sec-t">Portfólio</div><div class="port" style="grid-template-columns:repeat(${FX.PORTFOLIO_COUNT},minmax(0,1fr))">${FX.photos(p).map((src, i) => `<button class="pf" data-src="${src}" aria-label="Ampliar foto ${i + 1} do portfólio">${FX.icon('camera', 's22')}${s.port[i] || 'Foto'}<img src="${src}" alt="Trabalho de ${p.name}" loading="lazy" onerror="this.remove()"></button>`).join('')}</div></div>
+    <div class="sec"><div class="sec-t">Portfólio</div><div class="port" style="grid-template-columns:repeat(2,minmax(0,1fr)),minmax(0,1fr))">${FX.photos(p).map((src, i) => `<button class="pf" data-src="${src}" aria-label="Ampliar foto ${i + 1} do portfólio">${FX.icon('camera', 's22')}${s.port[i] || 'Foto'}<img src="${src}" alt="Trabalho de ${p.name}" loading="lazy" onerror="this.remove()"></button>`).join('')}</div></div>
 
 
   <div class="sec"><div class="sec-t">Avaliações de clientes</div>${FX.REVIEWS.map((r) => `<div class="review"><header><span>${r.who}</span><span>${FX.icon("star", "s14 star")}${r.r}</span></header><p>${r.t}</p></div>`).join("")}

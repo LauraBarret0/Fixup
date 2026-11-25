@@ -89,7 +89,7 @@
             .map(
               (p) => `
       <article class="card pro">
-        <div class="pro-top"><div class="avatar">${p.ini}</div>
+        <div class="pro-top"><div class="avatar">${FX.avatar(p)}</div>
           <div class="pro-id"><b>${p.name}</b><div class="ver">${FX.icon("shield", "s14 thick")}Identidade verificada</div></div>
           <div class="rate"><b>${FX.icon("star", "s16 star")}${FX.rate(p.rating)}</b><span>${p.n} avaliações</span></div></div>
         <div class="thumbs">${FX.photos(p)

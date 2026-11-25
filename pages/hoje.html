@@ -132,7 +132,7 @@
         later(() => {
           draw(2);
           accepted = true;
-          $("#hjAv").textContent = p.ini;
+          FX.setAvatar($('#hjAv'), p)
           $("#hjName").textContent = p.name;
           $("#hjMeta").textContent =
             `${FX.rate(p.rating)} · Identidade verificada`;

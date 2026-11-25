@@ -53,7 +53,7 @@
       icon: "bolt",
       min: 190,
       role: ["Eletricista", "Eletricista"],
-      port: ["Quadro de luz", "Chuveiro", "Tomadas"],
+      port: ['Quadro de luz', 'Chuveiro', 'Tomadas', 'Iluminação'],
     },
     {
       id: "encanamento",
@@ -61,7 +61,7 @@
       icon: "drop",
       min: 170,
       role: ["Encanadora", "Encanador"],
-      port: ["Vazamento", "Torneira", "Sifão"],
+      port: ['Vazamento', 'Torneira', 'Sifão', 'Registro'] ,
     },
     {
       id: "pintura",
@@ -69,7 +69,7 @@
       icon: "roller",
       min: 320,
       role: ["Pintora", "Pintor"],
-      port: ["Sala", "Fachada", "Textura"],
+      port: ['Sala', 'Fachada', 'Textura', 'Teto'],
     },
     {
       id: "montagem",
@@ -77,7 +77,7 @@
       icon: "cube",
       min: 140,
       role: ["Montadora", "Montador"],
-      port: ["Guarda-roupa", "Estante", "Cama"],
+      port: ['Guarda-roupa', 'Estante', 'Cama', 'Mesa']  ,
     },
   ];
   FX.PROS = [
@@ -311,9 +311,14 @@
 
   /* ---------- Fotos reais (pasta image/) ---------- */
   /* ---------- Perfil do cliente (dados ilustrativos) ---------- */
-  FX.CLIENT = { name: 'Mariana', ini: 'MA', rating: 4.9 };   // nota de 0 a 5, vinda das avaliações dos profissionais
+  FX.CLIENT = { id: 'mariana', name: 'Mariana', ini: 'MA', rating: 4.9 };  // nota de 0 a 5, vinda das avaliações dos profissionais
   FX.IMG = "../image/"; // pasta das imagens, relativa às páginas .html
-  FX.PORTFOLIO_COUNT = 2; // quantas fotos de portfólio por profissional (camila1.jpg, camila2.jpg...)
+  FX.PORTFOLIO_COUNT = 4; // quantas fotos de portfólio por profissional (camila1.jpg, camila2.jpg...)
+  FX.AVATAR_EXT = 'jpg';        // extensão da foto de perfil: image/profile/camila.jpg
+  FX.avatarSrc = (p) => `${FX.IMG}profile/${p.id}.${FX.AVATAR_EXT}`;
+  /* Avatar com foto; se o arquivo não existir, ficam as iniciais. */
+  FX.avatar = (p, cls = '') => `<div class="avatar ${cls}">${p.ini}<img src="${FX.avatarSrc(p)}" alt="" onerror="this.remove()"></div>`;
+  FX.setAvatar = (el, p) => { el.textContent = p.ini; const i = new Image(); i.alt = ''; i.onload = () => el.append(i); i.src = FX.avatarSrc(p); };
   FX.photos = (p) =>
     Array.from(
       { length: FX.PORTFOLIO_COUNT },

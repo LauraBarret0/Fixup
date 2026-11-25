@@ -60,7 +60,7 @@
   <script>
     FX.tabbar("conta");
     const c = FX.CLIENT, star = FX.icon('star');
-    document.getElementById('cAv').textContent = c.ini;
+    FX.setAvatar(document.getElementById('cAv'), c);
     document.getElementById('cName').textContent = c.name;
     document.getElementById('cStars').innerHTML =
       `<span class="stars-row" role="img" aria-label="Nota ${FX.rate(c.rating)} de 5">${star.repeat(5)}<span class="stars-fill" style="width:${c.rating / 5 * 100}%">${star.repeat(5)}</span></span><b>${FX.rate(c.rating)}</b>`;
